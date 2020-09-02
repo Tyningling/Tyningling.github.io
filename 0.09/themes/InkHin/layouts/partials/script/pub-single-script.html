@@ -1,0 +1,28 @@
+<script defer src="{{.Site.Params.siteCDN}}/js/micromodal.min.js"></script>
+<script defer src="{{.Site.Params.siteCDN}}/js/clipboard.min.js"></script>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    // modal
+    MicroModal.init({
+      disableScroll: true,
+      disableFocus: true,
+      awaitOpenAnimation: false,
+      awaitCloseAnimation: false,
+      debugMode: false,
+      onClose: function(modal) {
+        if (clipboard) {
+          clipboard = null;
+        }
+      },
+    });
+
+    var citeBtn = document.getElementById('citeBtn');
+    citeBtn.addEventListener('click', function () {
+      MicroModal.show('modal');
+    });
+
+    // clipboard
+    var clipboard = new ClipboardJS('#copyBtn');
+  });
+</script>

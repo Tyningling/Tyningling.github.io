@@ -1,0 +1,41 @@
+<!--Inter.net专属友链-->
+<div>
+        <article class="p-content post-99 page type-page status-publish hentry" id="post-99">
+            <div class="logo-INTEL_NET">            </div>
+    
+    <p class="logo-INTEL_NET_P">
+        我们所要做的事，就是创新，在有限的空间内创造无限的可能。以爱好的角度切入，以专业的态度深入。无论你是因为什么原因， 兴趣还是职业， 小白还是大佬，希望你能在这里找到自己的价值。
+     </p>
+    <hr>
+<p></p>
+<div class="clearfix"></div>      
+    </article>
+    <ul class="links columns grid-md">
+  {{ $sectionNum := (len .Pages) }} 
+
+  {{ if gt $sectionNum 0 }}
+      {{ $category := .Params.category }}
+      {{ $categoryIcon := (print "svgs/showcase/" (.Params.categoryIcon | default "code") ".svg") }}
+      {{ range .Pages }}
+      <li class="column col-6 col-md-12">
+      <div class="links-card">
+          <a id = "friend" class="links-header " href="{{ .Params.Link }}" target="_blank" rel="noreferrer">
+            <div class="links-image" style="background-image:url({{.Params.thumb}});" >{{ if .Params.thumb }}</div>
+                                  <img class="links-avatar avatar avatar-xl" src="{{.Params.touxiang}}">
+                              <div class="links-name">{{ .Title }}</div>
+          </a>
+          {{ end }}
+          <div class="links-content">
+              <div class="links-author">
+                  &nbsp;                </div>
+              <div class="links-notes text-gray">
+                      {{ .Description | markdownify }}
+              </div>
+          </div>
+        </div>
+        </li>
+        {{ end }}
+  {{ end }}
+</ul>
+<div class="p-comments">
+</div>

@@ -1,0 +1,34 @@
+{{- if .Site.Params.valine.visitor -}}
+  <span id="{{ .RelPermalink | relLangURL }}" class="leancloud_visitors" data-flag-title="{{ .Title }}">
+  <span class="post-meta-item-text">文章阅读量 </span>
+  <span class="leancloud-visitors-count">0</span>
+  <p></p>
+  </span>
+{{- end }}
+<div id="vcomments" style="filter: opacity(0.8); colo:#de8f8f;"></div> <!--- 增加阴影效果-->
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+<!--<link rel="stylesheet" href="{{ .Site.Params.siteCDN }}/css/valine.css" type="text/css" /> 
+在想桃子，老老实实本地配置相对路径把-->
+  <script>
+  new Valine({
+      el: '#vcomments' ,
+      appId: '{{ .Site.Params.valine.appId }}',
+      appKey: '{{ .Site.Params.valine.appKey }}',
+      notify: {{ .Site.Params.valine.notify }},
+      verify: {{ .Site.Params.valine.verify }},
+      avatar:'{{ .Site.Params.valine.avatar }}',
+      placeholder: '{{ .Site.Params.valine.placeholder }}',
+      visitor: {{ .Site.Params.valine.visitor }}
+  });
+</script>
+<style>
+  .vpanel{
+    background-image:url("{{.Site.Params.siteCDN}}/images/valine/valinebg.webp");
+    background-repeat:no-repeat;
+    background-color:#fff;
+  }
+  .v * {
+    color:#bb7e7e;
+  }
+</style>

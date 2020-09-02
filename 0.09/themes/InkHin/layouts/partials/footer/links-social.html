@@ -1,0 +1,22 @@
+{{ if $.Param "showSocialLinks" }}
+<div class="footer__social">
+  <div class="social" style='font-size:1rem;'>
+  
+  <!-- 这里改成随机一句话 4.16-->
+  
+  
+  <script type="text/javascript" src="{{ .Site.Params.daytalks }}"></script>
+  
+    <!--  底部社交图标
+    {{ range $name, $path := $.Param "socialOptions" }}
+      {{ if $path }}
+      <a href="{{ $path | safeURL }}" title="{{ $name }}" aria-label="{{ $name }}">
+        {{ partial (print "svgs/social/" $name ".svg") (dict "width" 32 "height" 32) }}
+      </a>
+      {{ end }}      
+    {{ end }}
+    -->
+  <!--  {{ partial "footer/links-feed.html" . }}  底部RSS图标-->
+  </div>
+</div>
+{{ end }}

@@ -1,0 +1,28 @@
+{{ if $.Params.header }}  
+  {{ range $.Params.header }}
+    {{ if eq .type "text" }}
+    <div id="tbgg">  
+    <div class="site-header basicflex-column site-header__align-{{ .align }}" data-ani="{{ $.Site.Params.enableUiAnimation | default "true" }}" style="animation: slide-in-down 2s .2s 1 ease-out both; width: 100%; height: {{ .height }}px; padding: {{ .paddingY }}px {{ .paddingX }}px;">
+        {{ $header := . }}
+        {{ if .title }}            
+          {{ range .title }}
+          <div class="site-header__title {{ if $header.titleShadow }}site-header__title--shadow{{ end }}" style="white-space: nowrap;word-break:keep-all;font-size: {{ $header.titleFontSize }}px; {{ with $header.titleColor }}color:{{ . }}{{ end }};">
+            {{ . }}
+          </div>
+          {{ end }}
+        {{ end }}
+        {{ if .spaceBetweenTitleSubtitle }}
+          <div style="height: {{ .spaceBetweenTitleSubtitle }}px"></div>
+        {{ end }}
+        {{ if .subtitle }}
+          {{ range .subtitle }} 
+          <div class="site-header__subtitle" style="white-space: nowrap;word-break:keep-all;font-size: {{ $header.subtitleFontSize }}px; {{ with $header.subtitleColor }}color:{{ . }}{{ end }}" data-cursive="{{ with $header.subtitleCursive }}{{ . }}{{ end }}">
+            {{ . }}
+          </div>
+          {{ end }}      
+        {{ end }}
+      </div>
+    </div>
+    {{ end }}
+  {{ end }}
+{{ end }}

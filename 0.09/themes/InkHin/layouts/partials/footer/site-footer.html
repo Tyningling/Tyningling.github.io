@@ -1,0 +1,45 @@
+<footer class="footer">
+    {{ partial "footer/select-lang" . }}
+    {{ partial "footer/links-social.html" . }}
+    {{ partial "footer/go-to-top" . }}
+    <hr />
+
+    <div class="basicflex">
+        {{ range $.Param "footerLinks" }}
+            <a href="{{ .link }}" class="footer__link" target="_blank" rel="noreferrer">{{ .name }}</a>
+        {{ end }}
+    </div>
+<!-- 原脚链 -->
+    <div class="footer__poweredby">
+      <!--  {{ partial "footer/site-counter" . }}
+        {{ if $.Site.Copyright }}        
+            <p class="caption">
+                {{ if $.Site.Params.copyrightOptions.enableCopyrightLink }}
+                    {{ $leftString := replace (index (split $.Site.Copyright "{}") 0) "{year}" now.Year }}
+                    {{ $rightString := replace (index (split $.Site.Copyright "{}") 1) "{year}" now.Year }}
+
+                    {{ if and ($.Site.Params.copyrightOptions.copyrightLinkImage) ($.Site.Params.copyrightOptions.copyrightLinkText) }}
+                        <a rel="license" href="{{ $.Site.Params.copyrightOptions.copyrightLink }}" class="footer__copyright--img"><img alt="{{ $.Site.Params.copyrightOptions.copyrightLinkText }}" style="border-width:0" src="{{ $.Site.Params.copyrightOptions.copyrightLinkImage }}"/></a>{{ $leftString | markdownify }}<a rel="license" href="{{ $.Site.Params.copyrightOptions.copyrightLink }}">{{ $.Site.Params.copyrightOptions.copyrightLinkText }}</a>{{ $rightString | markdownify }}
+                    {{ else }}
+                        {{ $leftString | markdownify }}<a rel="license" href="{{ $.Site.Params.copyrightOptions.copyrightLink }}">{{ $.Site.Params.copyrightOptions.copyrightLinkText }}</a>{{ $rightString | markdownify }}
+                    {{ end }}
+                {{ else }}
+                    {{ with $.Site.Copyright }}{{ replace . "{year}" now.Year | markdownify}}{{ end }}
+                {{ end }}
+            </p>
+        {{ end }}
+     -->
+        {{ if $.Param "showPoweredBy" }}
+    <div style="font-size: 12px; line-height: 1.2; text-align: center;">  
+        <p>托管于&nbsp;<a href="https://drive.google.com/" target="_blank" rel="noreferrer">GoogleDrive</a>.&nbsp;
+            <a href="https://drv.tw/" target="_blank" rel="noreferrer">DriveToWeb</a>&nbsp;提供Web访问. 
+            <a href="https://www.cloudflare.com/" target="_blank" rel="noreferrer">CloudFlare</a>&nbsp;提供DNS解析与CDN服务.&nbsp;
+            <a href="https://www.jsdelivr.com/" target="_blank" rel="noreferrer">Jsdelivr</a>提供资源加速。</p>
+            <p>© 2020&nbsp;<a alt="RSS" href="/index.xml">风陵</a>.&nbsp;由&nbsp;<a href="https://gohugo.io/" target="_blank" rel="noreferrer">Hugo</a>&nbsp;强力驱动.&nbsp;
+            Theme&nbsp;By&nbsp;<a href="https://github.com/Tyningling/tyningling.github.io" target="_blank" rel="noreferrer">风陵</a>&nbsp;{{ .Site.Params.version }}.&nbsp;
+            <a href="/sitemap.xml" target="_blank" rel="noreferrer">站点地图</a>.</p>
+            <p> Made with &nbsp; <i class="fas fa-heart throb" style="none;"></i> &nbsp;by InkHin. </p>
+            {{ end }}
+    </div>  
+    </div> 
+</footer>

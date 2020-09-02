@@ -1,0 +1,96 @@
+{{ range .AlternativeOutputFormats }}
+
+<link rel="{{ .Rel }}" type="{{ .MediaType.Type }}" title="{{ .Name }}" href="{{ .Permalink | safeURL }}">
+{{ end }}
+<meta name="description" content="{{ $.Param "description" }}" />
+{{ with $.Params.keywords }}
+<meta name="keywords" content="{{ delimit $.Params.keywords "," }}">
+{{ end }}
+{{ with $.Params.tags }}
+<meta name="keywords" content="{{ delimit $.Params.tags "," }}">
+{{ end }}
+<meta name="created" content="{{ .Date.Format "2006-01-02T15:04:05-0700" }}">
+<meta name="modified" content="{{ .Lastmod.Format "2006-01-02T15:04:05-0700" }}">
+<meta name="theme-inkhin-version" content="{{.Site.Params.version }}">
+<meta property="article:published_time" content="{{ .Date.Format "2006-01-02T15:04:05-0700" }}">
+{{ if $.Param "author" }}
+<meta name="author" content="{{ $.Param "author" }}">
+<meta property="article:author" content="{{ .Permalink | absLangURL }}@{{ $.Param "author" }}">
+{{ else if .Site.Params.myname }}
+<meta name="author" content="{{ .Site.Params.myname }}">
+{{ end }}
+{{ with $.Param "contact" }}<meta name="contact" content="{{ . }}">{{ end }}
+<meta property="og:site_name" content="{{ .Site.Title }}">
+<meta property="og:title" content="{{ .Title }}">
+<meta property="og:url" content="{{ .Permalink | absLangURL }}">
+<meta property="og:type" content="{{ if .IsPage }}article{{ else }}website{{ end }}">
+<meta property="og:description" content="{{ $.Param "description" }}">
+{{ if .Params.meta_image }}
+  {{ with .Params.meta_image }}
+    <meta property="og:image" content="{{ . | absURL }}">
+    <meta property="og:image:url" content="{{ . | absURL }}">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:app:name:iphone" content="{{ $.Site.Title }}">
+    <meta property="twitter:title" content="{{ $.Param "title" }}">
+    <meta property="twitter:description" content="{{ $.Param "description" }}">
+  {{ end }}
+{{ else if .Params.image }}
+  {{ with .Params.image }}
+    <meta property="og:image" content="{{ . | absURL }}">
+    <meta property="og:image:url" content="{{ . | absURL }}">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:app:name:iphone" content="{{ $.Site.Title }}">
+    <meta property="twitter:title" content="{{ $.Param "title" }}">
+    <meta property="twitter:description" content="{{ $.Param "description" }}">
+  {{ end }}
+{{ else if $.Param "meta_image" }}
+  {{ with $.Param "meta_image" }}
+    <meta property="og:image" content="{{ . | absURL }}">
+    <meta property="og:image:url" content="{{ . | absURL }}">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:app:name:iphone" content="{{ $.Site.Title }}">
+    <meta property="twitter:title" content="{{ $.Param "title" }}">
+    <meta property="twitter:description" content="{{ $.Param "description" }}">
+  {{ end }}
+{{ end }}
+{{ hugo.Generator }}
+<meta name="msapplication-TileColor" content="{{ $.Scratch.Get "themeTitleColor" | default "#fff" }}">
+<!-- Chrome, Firefox OS and Opera -->
+<meta name="theme-color" content="{{ $.Scratch.Get "themeNavbarColor" | default "#fff" }}">
+<!-- Windows Phone -->
+<meta name="msapplication-navbutton-color" content="{{ $.Scratch.Get "themeNavbarColor" | default "#fff" }}">
+<!-- iOS Safari -->
+<meta name="apple-mobile-web-app-status-bar-style" content="{{ $.Scratch.Get "themeNavbarColor" | default "#fff" }}">
+{{ if $.Param "canonicalUrl" }}
+<link rel="canonical" href="{{ $.Param "canonicalUrl" | absLangURL }}">
+{{ else }}
+<link rel="canonical" href="{{ .Permalink | absLangURL }}">
+{{ end }}
+<link rel="manifest" href= "{{.Site.Params.siteCDN}}/manifest.json">
+{{ if $.Site.Params.useFaviconGenerator }}
+  <link rel="apple-touch-icon" sizes="57x57" href="{{.Site.Params.siteCDN}}/images/favicon/apple-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="{{.Site.Params.siteCDN}}/images/favicon/apple-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="{{.Site.Params.siteCDN}}/images/favicon/apple-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="{{.Site.Params.siteCDN}}/images/favicon/apple-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="{{.Site.Params.siteCDN}}/images/favicon/apple-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="{{.Site.Params.siteCDN}}/images/favicon/apple-icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="{{.Site.Params.siteCDN}}/images/favicon/apple-icon-180x180.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="{{.Site.Params.siteCDN}}/images/favicon/android-icon-192x192.png">
+  <link rel="icon" type="image/png" sizes="512x512" href="{{.Site.Params.siteCDN}}/images/favicon/android-icon-512x512.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="{{.Site.Params.siteCDN}}/images/favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="{{.Site.Params.siteCDN}}/images/favicon/favicon-96x96.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="{{.Site.Params.siteCDN}}/images/favicon/favicon-16x16.png">
+  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="msapplication-TileImage" content="{{.Site.Params.siteCDN}}/images/apple-icon-precomposed.png">
+{{ else }}
+  {{ if (fileExists "static/apple-touch-icon.png") -}}
+  <link rel="apple-touch-icon" href="{{.Site.Params.siteCDN}}/images/apple-touch-icon.png">
+  {{- end }}
+  <link rel="shortcut icon" href="{{.Site.Params.siteCDN}}/images/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="{{.Site.Params.siteCDN}}/images/favicon.png" sizes="any" type="image/png" />
+  {{ if (fileExists "static/logo.svg") -}}
+  <link rel="icon" href="{{.Site.Params.siteCDN}}/logo.png" sizes="any" type="image/svg+xml" />
+  {{- end }}
+{{ end }}
+<!-- 适应移动端屏幕比例-->
+<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">

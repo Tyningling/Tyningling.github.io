@@ -1,0 +1,41 @@
+[[main]]
+  identifier = "主页"
+  name = "主页"
+  url = ""
+  weight = 1
+[[main]]
+  parent = "archive"
+  name = "超级错题本"
+  url = "categories/exercisebook/"
+[[main]]
+  parent = "archive"
+  name = "读书笔记"
+  url = "categories/booknote/"
+[[main]]
+  parent = "archive"
+  name = "心情日志"
+  url = "categories/mylog/"
+[[main]]
+  identifier = "archive"
+  name = "文章归档"
+  url = "archive"
+  weight = 2
+
+
+[[main]]
+  identifier = "留言板"
+  name = "留言板"
+  url = "message"
+  weight = 3
+
+[[main]]
+  identifier = "about"
+  name = "关于"
+  url = "about"
+  weight = 4
+
+[[main]]
+  identifier = "friend"
+  name = "小伙伴们"
+  url = "showcase/inter.net/"
+  weight = 5

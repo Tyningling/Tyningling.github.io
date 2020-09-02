@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/5.11.2/css/all.css">
+		<title>风陵</title>
+		<script>
+			
+			function countDown(){
+				//获取初始时间
+				var time = document.getElementById("Time");
+				
+				//获取到id为time标签中的数字时间
+				if(time.innerHTML == 0){
+					//等于0时清除计时，并跳转该指定页面
+					window.location.href="http://inkhin.com";
+				}else{
+					time.innerHTML = time.innerHTML-1;
+				}
+			}
+			//1000毫秒调用一次
+			window.setInterval("countDown()",1000);
+		
+		</script>
+		<script type="text/javascript">
+		function phonemode(){ //Copy代码
+		   (function (doc, win) {
+		      var docEl = doc.documentElement,
+		        resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
+		        recalc = function () {
+		          var clientWidth = docEl.clientWidth;
+		          if (!clientWidth) return;
+		          docEl.style.fontSize = 13 * (clientWidth / 320) + 'px';//其中“20”根据你设置的html的font-size属性值做适当的变化
+		        };
+		
+		      if (!doc.addEventListener) return;
+		      win.addEventListener(resizeEvt, recalc, false);
+		      doc.addEventListener('DOMContentLoaded', recalc, false);
+		    })(document, window);
+			}
+		
+		function IsPC() { //Copy代码
+		    var userAgentInfo = navigator.userAgent;
+		    var Agents = ["Android", "iPhone",
+		                "SymbianOS", "Windows Phone",
+		                "iPad", "iPod"];
+		    var flag = true;
+		    for (var v = 0; v < Agents.length; v++) {
+		        if (userAgentInfo.indexOf(Agents[v]) > 0) {
+		            flag = false;
+		            break;
+		        }
+		    }
+		    return flag;
+		}
+		var flag = IsPC(); 
+		if(flag){
+			console.log('UA:pc');}
+		else{
+			phonemode(); //调整样式比例
+			console.log('UA:phone');}
+		</script>
+		<style>
+			html{
+				height:100%;
+				width:100%;
+			}
+			#Time,#p{
+				font-size: 1.875rem!important;
+				text-align: center!important;
+				color:#e0eaef!important;
+			}
+			#Font,#p{
+				font-size: 1.25rem!important;
+				text-align: center!important;
+				color:#000000!important;
+				padding-bottom:6.25rem ;
+			}
+			body{
+				background-image: url('https://api.dujin.org/bing/1920.php')!important;
+				background-repeat: no-repeat!important;
+				color:#ffffff!important;
+				font-size:1rem!important;
+				background-size: 100% 100%; /*如果显示宽度超过1920可能会出溢出白色*/
+			}
+			a {
+			    color: #64b587!important;
+				font-size:1rem!important;
+			}
+			#foot{
+				position: relative;
+				width:24.6875rem!important;
+				height:32.5rem%!important;
+				-webkit-box-shadow: 0.0625rem 0rem 0.9375rem #696969!important;
+				background: rgba(21,22,23,0.63)!important;
+				margin:auto!important;
+				font-size:1rem;!important;
+
+			}
+			.site-footer .social-container i {
+			    padding-left: 0.625rem;
+			    padding-right: 0.625rem;
+			    font-size: 1.25rem;
+			}
+			.fa-github:before {
+				color: bisque;
+			}
+
+		</style>
+	</head>
+	<body  width="100%" height="100"> 
+	<br><br>
+		<p id="Font" >正在跳转至新的博客地址 </p>
+		<div id = "foot" align="center">
+		<br>
+		<h1><p id="Time" >10</p></h1>
+		<a href="https://inkhin.com">点此立即跳转</a><br><br><br>
+
+		<br><br>
+		 <a href="https://www.cloudflare.com/" ><img src="https://www.cloudflare.com/img/logo-cloudflare-dark.svg" width=126 height=60/></a>
+		 <br><br>
+		<a href="http://tan90.pw" target="_blank"/> 沉默&nbsp;</a>|
+		<a href="https://lhr.wiki/" target="_blank"/> Eric&nbsp;</a>|
+		<a href="https://xxs2.cn/" target="_blank"/> 小学生&nbsp;</a>|
+		<a href="https://buger404.github.io/" target="_blank"/> 404&nbsp;</a>|
+		<a href="http://yorkin.cool/" target="_blank"/> 方程&nbsp;</a>|
+		<a href="https://www.ghl.info/" target="_blank"/> 流星&nbsp;</a>|
+		<a href="https://server.nutr1t07.codes/" target="_blank"/> Nutr1t07</a>
+		<br><br><br>
+		<a href="https://github.com/Tyningling" target="_blank">
+					<i class="fab fa-github gt-c-content-color-first"></i>
+		</a>
+		<br><br>
+		Powered by <a href="https://github.com/tyningling" target="_blank">InkHin</a>
+		</div>
+		<!-- require APlayer -->
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css">
+		<script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script>
+		<!-- require MetingJS -->
+		<script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
+		<meting-js
+		        id="3813196608"
+		        lrc-type="0"
+		        autoplay="false"
+		        server="tencent"
+		        order="random"
+		        type="playlist"
+		        fixed="true"
+		        list-olded="true">
+		</meting-js>
+		<style>.aplayer .aplayer-pic .aplayer-play {
+		    border: 0.125rem solid black;
+		    background-color: black;
+		}</style>
+		<br><br>
+		</body>
+</html>

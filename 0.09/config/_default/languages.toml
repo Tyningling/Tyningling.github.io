@@ -1,0 +1,15 @@
+[zh]
+  title = "风陵 | 天涯思君不见君"
+  languageName = "中国语"
+  weight = 1
+  languagedir = "ltr"
+  contentdir = "content/zh"
+#
+#[en]
+ # title = "InkHin"
+  #languageName = "English"
+  #weight = 2
+  #languagedir = "ltr"
+  #contentdir = "content/en"
+
+

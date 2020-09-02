@@ -1,0 +1,17 @@
+
+
+{{ if .IsHome }}
+
+<header id="tbg" class="header" onclick="bgcsh()" style="display: table;overflow: hidden;"> <!--这个overflow是弹幕效果隐藏溢出部分 重要！-->
+
+    {{ if and ($.Param "homeHeaderType") (eq ($.Param "homeHeaderType") "slide") }}
+        {{ partial "header/header-slide" . }}
+    {{ else if and ($.Param "homeHeaderType") (eq ($.Param "homeHeaderType") "img") }}
+        {{ partial "header/header-img" . }}
+    {{ else if and ($.Param "homeHeaderType") (eq ($.Param "homeHeaderType") "text") }}
+        {{ partial "header/header-text" . }}
+    {{ else }}
+        {{ partial "header/custom-header" . }}
+    {{ end }}
+</header>
+{{ end }}
